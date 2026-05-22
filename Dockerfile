@@ -14,13 +14,9 @@ RUN uv sync --frozen --no-install-project
 # Copy source code
 COPY . .
 
-
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Expose MCP port
-EXPOSE 8000
-
-# Run the MCP server
-CMD ["uv", "run", "python", "main.py"]
+# Default to stdio transport (for AI tool integration)
+CMD ["uv", "run", "python", "main.py", "--stdio"]

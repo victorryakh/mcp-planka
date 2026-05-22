@@ -2,8 +2,11 @@ services:
   mcp-planka:
     build:
       context: .
-    ports:
-      - "8000:8000"
     env_file:
       - .env
     restart: unless-stopped
+    # stdio mode (default): no ports needed
+    # For HTTP mode, add:
+    # ports:
+    #   - "8000:8000"
+    # And override CMD in docker run
